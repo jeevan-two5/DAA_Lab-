@@ -2,7 +2,10 @@
 using namespace std;
 
 int lengthOfLongestSubstring(string s) {
-    vector<int> lastIndex(256, -1); // store last index of each character
+    
+   
+    vector<int> lastIndex(256, -1); // store last index of each character  , 
+    // unordered_map<char,int>lastIndex;
     int left = 0, maxLen = 0;
 
     for (int right = 0; right < s.size(); right++) {
