@@ -25,3 +25,24 @@ int main() {
     cout << "Length of longest substring: " << lengthOfLongestSubstring(s) << endl;
     return 0;
 }
+
+//        ================================================================end=======================
+//Using unordered map
+
+int lengthOfLongestSubstring(string s) {
+    unordered_map<char, int> lastIndex; // store last seen index of each char
+    int left = 0, maxLen = 0;
+
+    for (int right = 0; right < s.size(); right++) {
+        char c = s[right];
+        // If char is already in map and inside current window
+        if (lastIndex.find(c) != lastIndex.end() && lastIndex[c] >= left) {
+            left = lastIndex[c] + 1; // move left pointer
+        }
+        lastIndex[c] = right; // update last index of current char
+        maxLen = max(maxLen, right - left + 1);
+    }
+
+    return maxLen;
+}
+
