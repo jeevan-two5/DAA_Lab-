@@ -9,7 +9,7 @@ int partition(vector<int>& arr, int left, int right, int pivot) {
             pivotIndex = i;
             break;
         }
-    }
+    }        
     swap(arr[pivotIndex], arr[right]); // move pivot to end
     pivotIndex = left;
     for (int i = left; i < right; i++) {
@@ -33,7 +33,7 @@ int kthSmallest(vector<int>& arr, int left, int right, int k) {
     if (left == right) return arr[left];
 
     // Step 1: Divide into groups of 5 and find medians
-    vector<int> medians;
+    vector<int> medians;             
     for (int i = left; i <= right; i += 5) {
         int subRight = min(i + 4, right);
         medians.push_back(findMedian(arr, i, subRight));
