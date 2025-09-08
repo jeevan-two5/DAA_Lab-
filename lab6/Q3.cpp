@@ -1,6 +1,29 @@
-#include <bits/stdc++.h>
-using namespace std;
+/*      Intuition
 
+For each prefix of the array, we need the median.
+
+If we sort every prefix, it would be O(n² log n) (too slow).
+
+👉 Optimal approach: Use two heaps
+
+Max-heap (left side): stores the smaller half of numbers.
+
+Min-heap (right side): stores the larger half of numbers.
+
+Balancing: sizes of heaps differ by at most 1.
+
+Median:
+
+If both heaps are equal size → average of tops.
+
+Else → top of the larger heap.
+
+⚡ Each insertion takes O(log n), so total = O(n log n) (optima   */
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
 vector<double> runningMedian(vector<int>& A, int n) {
     // Max-heap for left half
     priority_queue<int> left;
