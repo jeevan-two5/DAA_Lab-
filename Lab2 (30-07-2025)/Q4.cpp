@@ -131,3 +131,15 @@ int main() {
 
     BIT bit2(vals.size());
     for (int i = N-1; i >= 0; i--) {
+        // count how many future j satisfy prefix[j-1] ≤ prefix[i] + arr[j]
+        // (we stored prefix[j-1] in BIT)
+        int idx = getIdx2(prefix[i] + arr[i]);
+        votes[i] += bit2.query(idx);
+        // insert prefix[i] for future queries
+        int idx2 = getIdx2(prefix[i]);
+        bit2.update(idx2, 1);
+    }
+
+    for (int i = 0; i < N; i++) cout << votes[i] << " ";
+    cout << "\n";
+}
